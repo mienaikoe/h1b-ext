@@ -1,0 +1,32 @@
+{
+  "name": "h1b-ext",
+  "version": "1.0.0",
+  "description": "This Extension Adds H1B tags to companies in your LinkedIn Job Search.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+  },
+  "author": "",
+  "license": "Proprietary",
+  "dependencies": {
+    "airtable": "^0.11.6",
+    "wait-for-the-element": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/airtable": "^0.10.1",
+    "@types/chrome": "0.0.35",
+    "@webpack-cli/generators": "^3.0.1",
+    "csv-loader": "^3.0.5",
+    "json-loader": "^0.5.7",
+    "prettier": "^2.8.3",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+  },
+  "files": [
+    "src/background/background.ts",
+    "src/content/linkedin.ts",
+  ],
+  "types": [
+    "airtable",
+    "chrome"
+  ],
+}
