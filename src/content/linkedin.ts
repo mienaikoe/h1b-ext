@@ -1,14 +1,21 @@
-import { CSAction, CSRequestGetH1BData, CSResponseGetH1BData, H1BEntity } from "../common/types";
+import { CSAction } from "../common/types";
+import type { CSRequestGetH1BData, CSResponseGetH1BData, H1BEntity } from "../common/types";
 import { waitForTheElement } from 'wait-for-the-element';
+import H1BIndicator from './linkedin/H1BIndicator.svelte';
 
 const H1B_TAG = "h1buddy-tag";
 
 enum LinkedInSelectors {
-  List = ".jobs-search-results-list ul",
+  List = ".jobs-search-results-list ul.scaffold-layout__list-container",
   CompanyLink = "a.job-card-container__company-name",
+  CompanyImage = ".artdeco-entity-lockup__image",
 }
 
 let listElement: Element | undefined = undefined;
+
+const searchedCompanyIds: Set<string> = new Set();
+const h1bData: Map<string, H1BEntity[]> = new Map();
+
 
 const refreshListElement = async () => {
   const list = await waitForTheElement(LinkedInSelectors.List, {
@@ -30,22 +37,26 @@ const getCompanyId = (companyLink: HTMLAnchorElement): string | null => {
 
   const url = new URL(href);
   const urlPieces = url.pathname.split("/");
-  return urlPieces[2];
+  const companyId = urlPieces[2];
+
+  if( !companyId ){
+    return null;
+  }
+
+  const alreadyHasCompanyId = searchedCompanyIds.has(companyId);
+  searchedCompanyIds.add(companyId);
+
+  return alreadyHasCompanyId ? null : companyId
 }
 
-const constructH1BTag = (entities: H1BEntity[]) => {
-  const tag = document.createElement("span");
-  tag.style.display = "inline-block";
-  tag.style.backgroundColor = "cyan";
-  tag.style.color = "black";
-  tag.style.fontWeight = "bold";
-  tag.style.padding = "4px 8px";
-  tag.style.borderRadius = "3px";
-
-  tag.className = H1B_TAG;
-  tag.innerHTML = "H1B";
-
-  return tag;
+const constructH1BTag = (element: Element, entities: H1BEntity[]) => {
+  console.log("[H1B]", entities);
+  new H1BIndicator({
+    target: element,
+    props: {
+      entities,
+    }
+  });
 }
 
 const getH1BData = async (linkedInCompanyIds: string[]): Promise<Record<string, H1BEntity[]>> => {
@@ -74,57 +85,49 @@ const getH1BData = async (linkedInCompanyIds: string[]): Promise<Record<string, 
 }
 
 const subscribeToMutations = (targetNode: Element, callback: () => {}) => {
-  const observer = new MutationObserver((mutationList, observer) => {
-    console.log("Mutation in List");
-    callback();
-  });
-  observer.observe(targetNode, { childList: true });
+  const observer = new MutationObserver(callback);
+  observer.observe(targetNode, { childList: true, subtree: true });
+
+  chrome.webNavigation.onHistoryStateUpdated.addListener(
+    callback
+  )
 }
 
-
-const h1bData: Map<string, H1BEntity[]> = new Map();
-
 const refreshH1BData = async (companyIds: string[]) => {
-  const neededCompanyIds = companyIds.filter(companyId => !(companyId in h1bData));
-  if( neededCompanyIds ){
-    const newH1BData = await getH1BData(
-      companyIds
-    );
-    if( !newH1BData ){
-      console.error("")
-    }
-    Object.entries(newH1BData).forEach(([linkedInId, entry]) => {
-      h1bData.set(linkedInId, entry);
-    });
+  if( !companyIds.length ){
+    return;
   }
+
+  const newH1BData = await getH1BData(
+    companyIds
+  );
+  if( !newH1BData ){
+    return;
+  }
+  Object.entries(newH1BData).forEach(([linkedInId, entry]) => {
+    h1bData.set(linkedInId, entry);
+  });
 }
 
 
 const applyH1BTags = async () => {
   try{
-    if( !listElement ){
-      await refreshListElement();
-      subscribeToMutations(listElement, applyH1BTags);
-    }
-
     const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
     const companyIdItems: Record<string, Element> = {};
     companyItems.forEach(child => {
       const companyId = getCompanyId(child as HTMLAnchorElement);
-      if( !companyId ){
-        console.warn("No Company Id for:", child);
-        return;
+      if( companyId ){
+        companyIdItems[companyId] = child;
       }
-      companyIdItems[companyId] = child;
     });
 
     const companyIds = Object.keys(companyIdItems);
+
     await refreshH1BData(companyIds);
 
     Object.entries(companyIdItems).forEach(([companyId, child]) => {
       const h1bEntities = h1bData.get(companyId);
       if( !h1bEntities ){
-        console.log("No h1bData for:", companyId);
         return;
       }
 
@@ -133,12 +136,24 @@ const applyH1BTags = async () => {
         return;
       }
 
-      const h1bElement = constructH1BTag(h1bEntities);
-      child.parentElement?.appendChild(h1bElement);
+      const container = child.parentElement.parentElement.parentElement;
+      const imageContainer = container.querySelector(LinkedInSelectors.CompanyImage);
+      if( !imageContainer ){
+        return;
+      }
+
+      constructH1BTag(imageContainer, h1bEntities);
     })
   } catch(err) {
     console.error(err);
   }
 }
 
-applyH1BTags();
+const initialize = async () => {
+  await refreshListElement();
+  await applyH1BTags();
+  subscribeToMutations(listElement, applyH1BTags);
+}
+
+initialize();
+

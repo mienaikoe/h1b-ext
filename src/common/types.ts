@@ -1,7 +1,7 @@
 
 // H1B Data
 
-type H1BRecord = {
+export type H1BRecord = {
   year: number,
   naics: number,
   initial_approval: number,
@@ -16,9 +16,16 @@ type H1BLocation = {
   zip?: number,
 }
 
+type H1BLinkedIn = {
+  employee_count: number,
+  slug: string,
+  companyIds: string[],
+}
+
 export type H1BEntity = {
   company_name: string,
-  tax_id: number,
+  tax_id: number | null,
+  linkedin: H1BLinkedIn,
   location: H1BLocation,
   records: H1BRecord[],
 }

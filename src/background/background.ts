@@ -1,4 +1,5 @@
-import { CSRequest, CSAction, CSResponseGetH1BData } from "../common/types";
+import { CSAction } from "../common/types";
+import type { CSRequest, CSResponseGetH1BData } from "../common/types";
 import AirtableFetcher from "./fetchers/airtable-fetcher";
 import StaticFetcher from "./fetchers/static-fetcher";
 

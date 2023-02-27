@@ -21,17 +21,31 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/i,
+        test: /\.(ts|tsx|svelte)$/i,
         loader: "ts-loader",
         exclude: ["/node_modules/"],
       },
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
+      {
+        test: /\.(html|svelte)$/,
+        use: "svelte-loader",
+      },
+      {
+        // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+        test: /node_modules\/svelte\/.*\.mjs$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    alias: {
+      svelte: path.resolve("node_modules", "svelte"),
+    },
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".svelte"],
     modules: ["node_modules"],
+    mainFields: ["svelte", "browser", "module", "main"],
+    conditionNames: ["svelte"],
   },
   devtool: false,
 };

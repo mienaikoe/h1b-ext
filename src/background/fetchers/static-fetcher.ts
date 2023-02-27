@@ -1,5 +1,5 @@
-import { H1BEntity } from "../../common/types";
-import Fetcher from "./fetcher";
+import type { H1BEntity } from "../../common/types";
+import type Fetcher from "./fetcher";
 import h1bData from "./static-h1b-data-20230220.json";
 
 
