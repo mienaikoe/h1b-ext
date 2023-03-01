@@ -8,8 +8,8 @@ const ALL_COLUMNS = [
   "companyURL",
   "companyMembersURL",
   "companyNameNAICS",
-  "employeesCount",
   "LinkedIn Company Name",
+  "employeesCount",
   "LinkedIn Company IDs",
 ];
 

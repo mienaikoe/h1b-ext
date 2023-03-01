@@ -35,8 +35,7 @@ const entityFromRecord = (record: Airtable.Record<FieldSet>): H1BEntity => {
     tax_id: record.get(TableColumns.TaxId) as number,
     linkedin: {
       employee_count: record.get(TableColumns.Employees) as number,
-      slug: record.get(TableColumns.LinkedInCoSlug) as string,
-      companyIds: (record.get(TableColumns.LinkedInID) as string).split("|"),
+      company_ids: (record.get(TableColumns.LinkedInID) as string).split("|"),
     },
     location: {
       state: record.get(TableColumns.State) as string,

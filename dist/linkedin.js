@@ -483,7 +483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "mergeH1BRecords": () => (/* binding */ mergeH1BRecords)
 /* harmony export */ });
-var mergeH1BRecords = function (recordA, recordB) {
+const mergeH1BRecords = (recordA, recordB) => {
     return {
         year: recordA.year,
         naics: recordA.naics,
@@ -3104,199 +3104,132 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 
 
 
-var H1B_TAG = "h1buddy-tag";
+const H1B_TAG = "h1buddy-tag";
 var LinkedInSelectors;
 (function (LinkedInSelectors) {
     LinkedInSelectors["List"] = ".jobs-search-results-list ul.scaffold-layout__list-container";
     LinkedInSelectors["CompanyLink"] = "a.job-card-container__company-name";
     LinkedInSelectors["CompanyImage"] = ".artdeco-entity-lockup__image";
 })(LinkedInSelectors || (LinkedInSelectors = {}));
-var listElement = undefined;
-var searchedCompanyIds = new Set();
-var h1bData = new Map();
-var refreshListElement = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var list;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, (0,wait_for_the_element__WEBPACK_IMPORTED_MODULE_1__.waitForTheElement)(LinkedInSelectors.List, {
-                    timeout: 10000
-                })];
-            case 1:
-                list = _a.sent();
-                if (!list) {
-                    throw new Error("No List");
-                }
-                listElement = list;
-                return [2 /*return*/];
-        }
+let listElement = undefined;
+const searchedCompanyIds = new Set();
+const h1bData = new Map();
+const refreshListElement = () => __awaiter(void 0, void 0, void 0, function* () {
+    const list = yield (0,wait_for_the_element__WEBPACK_IMPORTED_MODULE_1__.waitForTheElement)(LinkedInSelectors.List, {
+        timeout: 10000
     });
-}); };
-var getCompanyId = function (companyLink) {
-    var href = companyLink.href;
+    if (!list) {
+        throw new Error("No List");
+    }
+    listElement = list;
+});
+const getCompanyId = (companyLink) => {
+    const href = companyLink.href;
     if (!href) {
         return null;
     }
-    var url = new URL(href);
-    var urlPieces = url.pathname.split("/");
-    var companyId = urlPieces[2];
+    const url = new URL(href);
+    const urlPieces = url.pathname.split("/");
+    const companyId = urlPieces[2];
     if (!companyId) {
         return null;
     }
-    var alreadyHasCompanyId = searchedCompanyIds.has(companyId);
+    const alreadyHasCompanyId = searchedCompanyIds.has(companyId);
     searchedCompanyIds.add(companyId);
     return alreadyHasCompanyId ? null : companyId;
 };
-var constructH1BTag = function (element, entities) {
+const constructH1BTag = (element, entities) => {
     console.log("[H1B]", entities);
     new _linkedin_H1BIndicator_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
         target: element,
         props: {
-            entities: entities,
+            entities,
         }
     });
 };
-var getH1BData = function (linkedInCompanyIds) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        return [2 /*return*/, new Promise(function (resolve, reject) {
-                chrome.runtime.sendMessage({
-                    action: _common_types__WEBPACK_IMPORTED_MODULE_0__.CSAction.getH1BData,
-                    payload: {
-                        ids: linkedInCompanyIds
-                    },
-                }, function (response) {
-                    if (!response) {
-                        console.error(chrome.runtime.lastError);
-                        return reject("No Response");
-                    }
-                    var payload = response.payload, error = response.error;
-                    if (error) {
-                        return reject(error);
-                    }
-                    else if (!payload) {
-                        return reject("No Payload");
-                    }
-                    else {
-                        return resolve(payload);
-                    }
-                });
-            })];
+const getH1BData = (linkedInCompanyIds) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({
+            action: _common_types__WEBPACK_IMPORTED_MODULE_0__.CSAction.getH1BData,
+            payload: {
+                ids: linkedInCompanyIds
+            },
+        }, (response) => {
+            if (!response) {
+                console.error(chrome.runtime.lastError);
+                return reject("No Response");
+            }
+            const { payload, error } = response;
+            if (error) {
+                return reject(error);
+            }
+            else if (!payload) {
+                return reject("No Payload");
+            }
+            else {
+                return resolve(payload);
+            }
+        });
     });
-}); };
-var subscribeToMutations = function (targetNode, callback) {
-    var observer = new MutationObserver(callback);
+});
+const subscribeToMutations = (targetNode, callback) => {
+    const observer = new MutationObserver(callback);
     observer.observe(targetNode, { childList: true, subtree: true });
     chrome.webNavigation.onHistoryStateUpdated.addListener(callback);
 };
-var refreshH1BData = function (companyIds) { return __awaiter(void 0, void 0, void 0, function () {
-    var newH1BData;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                if (!companyIds.length) {
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, getH1BData(companyIds)];
-            case 1:
-                newH1BData = _a.sent();
-                if (!newH1BData) {
-                    return [2 /*return*/];
-                }
-                Object.entries(newH1BData).forEach(function (_a) {
-                    var linkedInId = _a[0], entry = _a[1];
-                    h1bData.set(linkedInId, entry);
-                });
-                return [2 /*return*/];
-        }
+const refreshH1BData = (companyIds) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!companyIds.length) {
+        return;
+    }
+    const newH1BData = yield getH1BData(companyIds);
+    if (!newH1BData) {
+        return;
+    }
+    Object.entries(newH1BData).forEach(([linkedInId, entry]) => {
+        h1bData.set(linkedInId, entry);
     });
-}); };
-var applyH1BTags = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var companyItems, companyIdItems_1, companyIds, err_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
-                companyIdItems_1 = {};
-                companyItems.forEach(function (child) {
-                    var companyId = getCompanyId(child);
-                    if (companyId) {
-                        companyIdItems_1[companyId] = child;
-                    }
-                });
-                companyIds = Object.keys(companyIdItems_1);
-                return [4 /*yield*/, refreshH1BData(companyIds)];
-            case 1:
-                _a.sent();
-                Object.entries(companyIdItems_1).forEach(function (_a) {
-                    var companyId = _a[0], child = _a[1];
-                    var h1bEntities = h1bData.get(companyId);
-                    if (!h1bEntities) {
-                        return;
-                    }
-                    var h1bTag = child.nextElementSibling;
-                    if (h1bTag && h1bTag.className === H1B_TAG) {
-                        return;
-                    }
-                    var container = child.parentElement.parentElement.parentElement;
-                    var imageContainer = container.querySelector(LinkedInSelectors.CompanyImage);
-                    if (!imageContainer) {
-                        return;
-                    }
-                    constructH1BTag(imageContainer, h1bEntities);
-                });
-                return [3 /*break*/, 3];
-            case 2:
-                err_1 = _a.sent();
-                console.error(err_1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); };
-var initialize = function () { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, refreshListElement()];
-            case 1:
-                _a.sent();
-                return [4 /*yield*/, applyH1BTags()];
-            case 2:
-                _a.sent();
-                subscribeToMutations(listElement, applyH1BTags);
-                return [2 /*return*/];
-        }
-    });
-}); };
+});
+const applyH1BTags = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
+        const companyIdItems = {};
+        companyItems.forEach(child => {
+            const companyId = getCompanyId(child);
+            if (companyId) {
+                companyIdItems[companyId] = child;
+            }
+        });
+        const companyIds = Object.keys(companyIdItems);
+        yield refreshH1BData(companyIds);
+        Object.entries(companyIdItems).forEach(([companyId, child]) => {
+            const h1bEntities = h1bData.get(companyId);
+            if (!h1bEntities) {
+                return;
+            }
+            const h1bTag = child.nextElementSibling;
+            if (h1bTag && h1bTag.className === H1B_TAG) {
+                return;
+            }
+            const container = child.parentElement.parentElement.parentElement;
+            const imageContainer = container.querySelector(LinkedInSelectors.CompanyImage);
+            if (!imageContainer) {
+                return;
+            }
+            constructH1BTag(imageContainer, h1bEntities);
+        });
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
+const initialize = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield refreshListElement();
+    yield applyH1BTags();
+    subscribeToMutations(listElement, applyH1BTags);
+});
 initialize();
 
 })();

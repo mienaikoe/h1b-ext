@@ -4,11 +4,12 @@ import { parse } from "csv-parse/sync";
 const TableColumns = {
   FiscalYear: "Fiscal Year",
   CleanedEmployerName: "Cleaned Employer Name",
-  Employer: "Employer",
-  LinkedInID: "LinkedIn ID",
-  LinkedInCoURL: "LinkedIn Co URL",
+  Employer: "USCIS Company Name",
+  LinkedInCompanyIDs: "LinkedIn Company IDs",
+  LinkedInCoURL: "companyURL",
+  LinkedInMembersURL: "companyMembersURL",
   LinkedInCompanyName: "LinkedIn Company Name",
-  Employees: "Employees",
+  EmployeesCount: "employeesCount",
   InitialApproval: "Initial Approval",
   InitialDenial: "Initial Denial",
   ContinuingApproval: "Continuing Approval",
@@ -19,114 +20,102 @@ const TableColumns = {
   City: "City",
   ZIP: "ZIP",
 };
+/**
+ *  * Fiscal Year,
+ * Initial Approval,
+ * Initial Denial,
+ * Continuing Approval,
+ * Continuing Denial,
+ * NAICS,
+ * Tax ID,
+ * State,
+ * City,
+ * ZIP,
+ * Cleaned Employer Name,
+ * USCIS Company Name,
+ * slug,
+ * companyURL,
+ * companyMembersURL,
+ * employeesCount,
+ * LinkedIn Company Name,
+ * LinkedIn Company IDs
+ */
 
 const DESTINATION_FILE_PATH = `../src/background/fetchers/static-h1b-data-20230220.json`;
 
 const THRESHOLD = 5;
 
-const getNaicsFile = () => {
+const getMergedFile = () => {
   return new Promise((resolve, reject) => {
-    fs.readFile(`./generated/_ALL_${THRESHOLD}.csv`, function (err, fileData) {
-      if (err) {
-        reject(err);
-      }
-      if (!fileData) {
-        reject("No File Data");
-      }
-      const rows = parse(fileData, {
-        columns: true,
-        trim: true,
-        cast: true,
-      });
+    fs.readFile(
+      `./generated/MERGED_${THRESHOLD}.csv`,
+      function (err, fileData) {
+        if (err) {
+          reject(err);
+        }
+        if (!fileData) {
+          reject("No File Data");
+        }
+        const rows = parse(fileData, {
+          columns: true,
+          trim: true,
+          cast: true,
+        });
 
-      resolve(rows);
-    });
-  });
-};
-
-const getLinkedInFile = () => {
-  return new Promise((resolve, reject) => {
-    fs.readFile(`./generated/_LINKEDIN_CLEAN.csv`, function (err, fileData) {
-      if (err) {
-        reject(err);
+        resolve(rows);
       }
-      if (!fileData) {
-        reject("No linkedin file Data");
-      }
-      const rows = parse(fileData, {
-        columns: true,
-        trim: true,
-        cast: false,
-      });
-
-      resolve(rows);
-    });
+    );
   });
 };
 
 /*
-Fiscal Year,
-Initial Approval,
-Initial Denial,Continuing Approval,Continuing Denial,
-NAICS,Tax ID,State,City,ZIP,
-Cleaned Employer Name,
-USCIS Copmany Name,
-slug,companyURL,companyMembersURL,employeesCount,
-LinkedIn Company Name,LinkedIn Company IDs
+
 */
 
-const entityFromRecords = (naicsRecord, linkedInRecord) => {
+const entityFromRecords = (record) => {
+  const linkedInCompanyIds = record[TableColumns.LinkedInCompanyIDs];
+
   return {
-    company_name: naicsRecord[TableColumns.LinkedInCompanyName],
-    tax_id: naicsRecord[TableColumns.TaxId] || null,
+    company_name: record[TableColumns.LinkedInCompanyName],
+    tax_id: record[TableColumns.TaxId] || null,
     linkedin: {
-      companyIds: linkedInRecord["LinkedIn Company IDs"].split("|"),
-      employee_count: parseInt(linkedInRecord["employeesCount"]),
-      slug: linkedInRecord["slug"],
+      company_ids: linkedInCompanyIds
+        ? new String(linkedInCompanyIds).split("|")
+        : [],
+      employee_count: parseInt(record[TableColumns.EmployeesCount]),
     },
     location: {
-      state: naicsRecord[TableColumns.State],
-      city: naicsRecord[TableColumns.City],
-      zip: naicsRecord[TableColumns.ZIP],
+      state: record[TableColumns.State],
+      city: record[TableColumns.City],
+      zip: record[TableColumns.ZIP],
     },
     records: [
       {
-        naics: naicsRecord[TableColumns.NAICS],
-        year: naicsRecord[TableColumns.FiscalYear],
-        initial_approval: naicsRecord[TableColumns.InitialApproval],
-        initial_denial: naicsRecord[TableColumns.InitialDenial],
-        continuing_approval: naicsRecord[TableColumns.ContinuingApproval],
-        continuing_denial: naicsRecord[TableColumns.ContinuingDenial],
+        naics: record[TableColumns.NAICS],
+        year: record[TableColumns.FiscalYear],
+        initial_approval: record[TableColumns.InitialApproval],
+        initial_denial: record[TableColumns.InitialDenial],
+        continuing_approval: record[TableColumns.ContinuingApproval],
+        continuing_denial: record[TableColumns.ContinuingDenial],
       },
     ],
   };
 };
 
-const constructLinkedInMap = (linkedInCSV) => {
-  const liMap = new Map();
-  linkedInCSV.forEach((company) => {
-    const companyName = company["companyName"];
-    liMap.set(companyName, company);
-  });
-  return liMap;
-};
-
-const structure = (h1bCSV, linkedInMap) => {
+const structure = (mergedCSV) => {
   const structuredData = {};
 
-  h1bCSV.forEach((record) => {
-    const companyName = record["Employer"];
-
-    const linkedInCompany = linkedInMap.get(companyName);
-
-    if (!linkedInCompany) {
-      console.warn(`Company Not Found: ${companyName}`);
+  let linkedInInfoMissing = 0;
+  mergedCSV.forEach((record) => {
+    const linkedInCompanyIDs = record["LinkedIn Company IDs"];
+    if (!linkedInCompanyIDs) {
+      linkedInInfoMissing++;
       return;
     }
 
-    const entity = entityFromRecords(record, linkedInCompany);
+    const entity = entityFromRecords(record);
 
-    entity.linkedin.companyIds.forEach((linkedInCompanyId) => {
+    entity.linkedin.company_ids.forEach((linkedInCompanyId) => {
       const existingEntities = structuredData[linkedInCompanyId];
 
       if (existingEntities?.length) {
@@ -145,7 +134,9 @@ const structure = (h1bCSV, linkedInMap) => {
     });
   }, {});
 
-  console.log(structuredData[0]);
+  console.warn(`No LinkedIn Information: ${linkedInInfoMissing}`);
+
+  console.log(Object.values(structuredData)[0]);
 
   return structuredData;
 };
@@ -167,8 +158,6 @@ const buildJSON = (structuredData) => {
   );
 };
 
-const h1bCSV = await getNaicsFile();
-const linkedInCSV = await getLinkedInFile();
-const liMap = constructLinkedInMap(linkedInCSV);
-const structuredData = structure(h1bCSV, liMap);
+const mergedCSV = await getMergedFile();
+const structuredData = structure(mergedCSV);
 buildJSON(structuredData);

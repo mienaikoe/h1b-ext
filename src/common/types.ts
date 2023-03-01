@@ -18,8 +18,7 @@ type H1BLocation = {
 
 type H1BLinkedIn = {
   employee_count: number,
-  slug: string,
-  companyIds: string[],
+  company_ids: string[],
 }
 
 export type H1BEntity = {

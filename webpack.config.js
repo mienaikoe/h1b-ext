@@ -1,6 +1,7 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
+const { sveltePreprocess } = require("svelte-preprocess");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -21,13 +22,16 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|svelte)$/i,
+        test: /\.(ts)$/i,
         loader: "ts-loader",
         exclude: ["/node_modules/"],
       },
       {
-        test: /\.(html|svelte)$/,
-        use: "svelte-loader",
+        test: /\.(svelte)$/,
+        loader: "svelte-loader",
+        options: {
+          preprocess: sveltePreprocess,
+        },
       },
       {
         // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
@@ -42,7 +46,7 @@ const config = {
     alias: {
       svelte: path.resolve("node_modules", "svelte"),
     },
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".svelte"],
+    extensions: [".ts", ".js", ".svelte"],
     modules: ["node_modules"],
     mainFields: ["svelte", "browser", "module", "main"],
     conditionNames: ["svelte"],

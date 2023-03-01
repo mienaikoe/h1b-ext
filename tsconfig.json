@@ -1,20 +1,29 @@
 {
+  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
+    "lib": [
+      "ES2018",
+      "dom",
+      "esnext",
+    ],
     "module": "es6",
     "target": "es6",
     "allowJs": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "types": [
+      "airtable",
+      "chrome",
+      "svelte",
+    ],
   },
-  "extends": "@tsconfig/svelte/tsconfig.json",
+  "exclude": [
+    "node_modules"
+  ],
   "files": [
     "src/background/background.ts",
     "src/content/linkedin.ts",
-  ],
-  "types": [
-    "airtable",
-    "chrome"
   ],
 }
