@@ -5,7 +5,7 @@
 </script>
 
 <div class="h1bContainer">
-  <div class="h1bIndicator">H1B</div>
+  <div class="h1bIndicator">DTS</div>
   <div class="h1bSummary">
     <H1BSummary {entities} />
   </div>

@@ -26,6 +26,14 @@
   {#each allRecords as record}
     <H1BYear {record} />
   {/each}
+  <p class="feedback">
+    If you believe that our data is inaccurate, please let us know with
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://forms.gle/FvVjBZrGzWjT3Lhk6">this Google Form</a
+    >.
+  </p>
 </div>
 
 <style>
@@ -34,5 +42,10 @@
     padding: 6px;
     border: 1px solid #aaa;
     border-radius: 3px;
+  }
+
+  .feedback {
+    font-size: 10px;
+    color: #888;
   }
 </style>

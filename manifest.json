@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "H1Buddy",
+  "name": "DTS: Down To Sponsor",
   "version": "0.1",
-  "description": "This extension will show H1B info about companies in your LinkedIn job search.",
+  "description": "Find companies that are willing to sponsor you in your LinkedIn job search.",
 
   "action": {
     "default_icon": {
@@ -10,12 +10,12 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "",
+    "default_title": "DTS: Down To Sponsor",
     "default_popup": "static/popup.html"
   },
 
   "icons": {},
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "webNavigation"],
   "background": {
     "service_worker": "dist/background.js"
   },

@@ -36,7 +36,7 @@ function create_fragment(ctx) {
 		c() {
 			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0.textContent = "H1B";
+			div0.textContent = "DTS";
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(h1bsummary.$$.fragment);
@@ -115,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1vi39d6", ".h1bSummary.svelte-1vi39d6{background-color:white;padding:6px;border:1px solid #aaa;border-radius:3px}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-bibq0v", ".h1bSummary.svelte-bibq0v{background-color:white;padding:6px;border:1px solid #aaa;border-radius:3px}.feedback.svelte-bibq0v{font-size:10px;color:#888}");
 }
 
 function get_each_context(ctx, list, i) {
@@ -156,6 +156,8 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let div;
+	let t0;
+	let p;
 	let current;
 	let each_value = /*allRecords*/ ctx[0];
 	let each_blocks = [];
@@ -176,7 +178,14 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "h1bSummary svelte-1vi39d6");
+			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			p = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("p");
+
+			p.innerHTML = `If you believe that our data is inaccurate, please let us know with
+    <a target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">this Google Form</a>.`;
+
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(p, "class", "feedback svelte-bibq0v");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "h1bSummary svelte-bibq0v");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
@@ -185,6 +194,8 @@ function create_fragment(ctx) {
 				each_blocks[i].m(div, null);
 			}
 
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t0);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, p);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -202,7 +213,7 @@ function create_fragment(ctx) {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
 						(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(each_blocks[i], 1);
-						each_blocks[i].m(div, null);
+						each_blocks[i].m(div, t0);
 					}
 				}
 
@@ -3107,7 +3118,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
-const H1B_TAG = "h1buddy-tag";
+const DTS_TAG = "dts-tag";
 var LinkedInSelectors;
 (function (LinkedInSelectors) {
     LinkedInSelectors["List"] = ".jobs-search-results-list ul.scaffold-layout__list-container";
@@ -3134,15 +3145,9 @@ const getCompanyId = (companyLink) => {
     const url = new URL(href);
     const urlPieces = url.pathname.split("/");
     const companyId = urlPieces[2];
-    if (!companyId) {
-        return null;
-    }
-    const alreadyHasCompanyId = searchedCompanyIds.has(companyId);
-    searchedCompanyIds.add(companyId);
-    return alreadyHasCompanyId ? null : companyId;
+    return companyId || null;
 };
 const constructH1BTag = (element, entities) => {
-    console.log("[H1B]", entities);
     new _linkedin_H1BIndicator_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
         target: element,
         props: {
@@ -3178,7 +3183,6 @@ const getH1BData = (linkedInCompanyIds) => __awaiter(void 0, void 0, void 0, fun
 const subscribeToMutations = (targetNode, callback) => {
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, { childList: true, subtree: true });
-    chrome.webNavigation.onHistoryStateUpdated.addListener(callback);
 };
 const refreshH1BData = (companyIds) => __awaiter(void 0, void 0, void 0, function* () {
     if (!companyIds.length) {
@@ -3196,26 +3200,23 @@ const applyH1BTags = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
         const companyIdItems = {};
-        companyItems.forEach(child => {
-            const companyId = getCompanyId(child);
+        companyItems.forEach(companyItem => {
+            const companyId = getCompanyId(companyItem);
             if (companyId) {
-                companyIdItems[companyId] = child;
+                companyIdItems[companyId] = companyItem;
             }
         });
-        const companyIds = Object.keys(companyIdItems);
+        const companyIds = Object.keys(companyIdItems).
+            filter(companyId => !searchedCompanyIds.has(companyId));
         yield refreshH1BData(companyIds);
         Object.entries(companyIdItems).forEach(([companyId, child]) => {
             const h1bEntities = h1bData.get(companyId);
             if (!h1bEntities) {
                 return;
             }
-            const h1bTag = child.nextElementSibling;
-            if (h1bTag && h1bTag.className === H1B_TAG) {
-                return;
-            }
             const container = child.parentElement.parentElement.parentElement;
             const imageContainer = container.querySelector(LinkedInSelectors.CompanyImage);
-            if (!imageContainer) {
+            if (!imageContainer || imageContainer.children.length !== 1) {
                 return;
             }
             constructH1BTag(imageContainer, h1bEntities);

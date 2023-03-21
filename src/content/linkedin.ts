@@ -3,7 +3,7 @@ import type { CSRequestGetH1BData, CSResponseGetH1BData, H1BEntity } from "../co
 import { waitForTheElement } from 'wait-for-the-element';
 import H1BIndicator from './linkedin/H1BIndicator.svelte';
 
-const H1B_TAG = "h1buddy-tag";
+const DTS_TAG = "dts-tag";
 
 enum LinkedInSelectors {
   List = ".jobs-search-results-list ul.scaffold-layout__list-container",
@@ -39,18 +39,10 @@ const getCompanyId = (companyLink: HTMLAnchorElement): string | null => {
   const urlPieces = url.pathname.split("/");
   const companyId = urlPieces[2];
 
-  if( !companyId ){
-    return null;
-  }
-
-  const alreadyHasCompanyId = searchedCompanyIds.has(companyId);
-  searchedCompanyIds.add(companyId);
-
-  return alreadyHasCompanyId ? null : companyId
+  return companyId || null;
 }
 
 const constructH1BTag = (element: Element, entities: H1BEntity[]) => {
-  console.log("[H1B]", entities);
   new H1BIndicator({
     target: element,
     props: {
@@ -87,10 +79,6 @@ const getH1BData = async (linkedInCompanyIds: string[]): Promise<Record<string, 
 const subscribeToMutations = (targetNode: Element, callback: () => {}) => {
   const observer = new MutationObserver(callback);
   observer.observe(targetNode, { childList: true, subtree: true });
-
-  chrome.webNavigation.onHistoryStateUpdated.addListener(
-    callback
-  )
 }
 
 const refreshH1BData = async (companyIds: string[]) => {
@@ -114,14 +102,15 @@ const applyH1BTags = async () => {
   try{
     const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
     const companyIdItems: Record<string, Element> = {};
-    companyItems.forEach(child => {
-      const companyId = getCompanyId(child as HTMLAnchorElement);
+    companyItems.forEach(companyItem => {
+      const companyId = getCompanyId(companyItem as HTMLAnchorElement);
       if( companyId ){
-        companyIdItems[companyId] = child;
+        companyIdItems[companyId] = companyItem;
       }
     });
 
-    const companyIds = Object.keys(companyIdItems);
+    const companyIds = Object.keys(companyIdItems).
+      filter(companyId => !searchedCompanyIds.has(companyId));
 
     await refreshH1BData(companyIds);
 
@@ -131,14 +120,9 @@ const applyH1BTags = async () => {
         return;
       }
 
-      const h1bTag = child.nextElementSibling;
-      if( h1bTag && h1bTag.className === H1B_TAG ){
-        return;
-      }
-
       const container = child.parentElement.parentElement.parentElement;
       const imageContainer = container.querySelector(LinkedInSelectors.CompanyImage);
-      if( !imageContainer ){
+      if( !imageContainer || imageContainer.children.length !== 1 ){
         return;
       }
 
