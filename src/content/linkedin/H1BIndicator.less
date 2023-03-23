@@ -1,0 +1,49 @@
+.h1bIndicator {
+  margin-top: 6px;
+  position: relative;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+  height: 0; // this is because the art deco container linkedin uses is centered to the job title
+
+  .dts {
+    color: black;
+    font-size: 1.4em;
+    line-height: 20px;
+    font-weight: bold;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .h1bCounts{
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+
+    .h1bCount {
+      display: block;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.3em;
+      font-size: 1.2em;
+
+      &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        display: block;
+      }
+
+      &.approval::before {
+        background-color: green;
+      }
+      &.denial::before {
+        background-color: red;
+      }
+    }
+  }
+}

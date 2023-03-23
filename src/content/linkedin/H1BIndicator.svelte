@@ -1,42 +1,32 @@
-<script>
-  import H1BSummary from "./H1BSummary.svelte";
+<script lang="ts">
+  import type { H1BEntity, H1BRecord } from "../../common/types";
+  import { mergeH1BRecords } from "../../common/utilities";
 
-  export let entities = [];
+  export let entities: H1BEntity[] = [];
+
+  let mergedRecord: H1BRecord | undefined;
+  entities.forEach((entity) => {
+    entity.records.forEach((record) => {
+      if (!mergedRecord) {
+        mergedRecord = record;
+      } else {
+        mergedRecord = mergeH1BRecords(mergedRecord, record);
+      }
+    });
+  });
 </script>
 
-<div class="h1bContainer">
-  <div class="h1bIndicator">DTS</div>
-  <div class="h1bSummary">
-    <H1BSummary {entities} />
+<div class="h1bIndicator">
+  <div class="dts">DTS</div>
+  <div class="h1bCounts">
+    <div class="h1bCount approval">
+      {mergedRecord.continuing_approval + mergedRecord.initial_approval}
+    </div>
+    <div class="h1bCount denial">
+      {mergedRecord.continuing_denial + mergedRecord.initial_denial}
+    </div>
   </div>
 </div>
 
-<style>
-  .h1bContainer {
-    margin-top: 2px;
-    position: relative;
-  }
-
-  .h1bSummary {
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    z-index: 1;
-    width: 200px;
-  }
-
-  .h1bContainer:hover .h1bSummary {
-    display: block;
-  }
-
-  .h1bIndicator {
-    background-color: cyan;
-    color: black;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: bold;
-    border-radius: 3px;
-    text-align: center;
-  }
+<style src="./H1BIndicator.less">
 </style>

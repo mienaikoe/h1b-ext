@@ -75,13 +75,21 @@ const getMergedFile = () => {
 const entityFromRecords = (record) => {
   const linkedInCompanyIds = record[TableColumns.LinkedInCompanyIDs];
 
+  let url = record[TableColumns.LinkedInCoURL] || "";
+  if (url[url.length - 1] === "/") {
+    url = url.substring(0, url.length - 1);
+  }
+  const slug = url.split("/").pop();
+
   return {
     company_name: record[TableColumns.LinkedInCompanyName],
+    legal_company_name: record[TableColumns.Employer],
     tax_id: record[TableColumns.TaxId] || null,
     linkedin: {
       company_ids: linkedInCompanyIds
         ? new String(linkedInCompanyIds).split("|")
         : [],
+      slug,
       employee_count: parseInt(record[TableColumns.EmployeesCount]),
     },
     location: {

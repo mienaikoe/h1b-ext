@@ -1,7 +1,7 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const { sveltePreprocess } = require("svelte-preprocess");
+const sveltePreprocess = require("svelte-preprocess");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -30,7 +30,7 @@ const config = {
         test: /\.(svelte)$/,
         loader: "svelte-loader",
         options: {
-          preprocess: sveltePreprocess,
+          preprocess: sveltePreprocess({}),
         },
       },
       {

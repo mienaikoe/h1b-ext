@@ -2,7 +2,7 @@
 // https://airtable.com/appqvg3t7MeAbxtot/tblT0R12gaWugpUKj/viwppRwnOloc8h0ew?blocks=hide
 
 import Airtable from "airtable";
-import type { FieldSet, Table } from "airtable";
+import type { FieldSet } from "airtable";
 import type { AirtableBase } from "airtable/lib/airtable_base";
 import type { H1BEntity } from "../../common/types";
 import type Fetcher from "./fetcher";
@@ -32,10 +32,12 @@ enum TableColumns {
 const entityFromRecord = (record: Airtable.Record<FieldSet>): H1BEntity => {
   return {
     company_name: record.get(TableColumns.Employer) as string,
+    legal_company_name: record.get(TableColumns.Employer) as string,
     tax_id: record.get(TableColumns.TaxId) as number,
     linkedin: {
       employee_count: record.get(TableColumns.Employees) as number,
       company_ids: (record.get(TableColumns.LinkedInID) as string).split("|"),
+      slug: (record.get(TableColumns.LinkedInCoURL) as string).split("/").pop(),
     },
     location: {
       state: record.get(TableColumns.State) as string,
@@ -97,6 +99,19 @@ class AirtableFetcher implements Fetcher {
       }
       return metadataMap;
     }, {});
+  }
+
+  getDataForSlug = async (slug: string): Promise<H1BEntity[]> => {
+    const records = await this.base(TABLE_ID).select({
+      filterByFormula: `SEARCH({companyURL}, "/company/${slug}")`,
+      maxRecords: 100,
+    }).all();
+
+    const entities = records.map(record => {
+      return entityFromRecord(record);
+    })
+
+    return Promise.resolve(entities);
   }
 }
 
