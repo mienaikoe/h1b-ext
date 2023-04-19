@@ -25,7 +25,7 @@ const handlers = {
     const typedRequest = request as DTSRequestGetH1BDataBySlug;
     const entities = await fetcher.getDataForSlug(typedRequest.payload.slug);
     sendResponse({
-      payload: entities,
+      payload: entities || null,
     });
   }
 }

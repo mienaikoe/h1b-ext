@@ -10,7 +10,7 @@ export const sendRequest = async (request: DTSRequest): Promise<DTSResponsePaylo
       const {payload, error} = response;
       if( error ){
         return reject(error);
-      } else if( !payload ){
+      } else if( typeof(payload) === 'undefined' ){
         return reject(`No payload in response: ${JSON.stringify(response)}`);
       } else {
         return resolve(payload);

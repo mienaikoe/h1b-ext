@@ -716,7 +716,7 @@ const sendRequest = (request) => __awaiter(void 0, void 0, void 0, function* () 
             if (error) {
                 return reject(error);
             }
-            else if (!payload) {
+            else if (typeof (payload) === 'undefined') {
                 return reject(`No payload in response: ${JSON.stringify(response)}`);
             }
             else {
@@ -3414,7 +3414,7 @@ const refreshElement = (selector) => __awaiter(void 0, void 0, void 0, function*
         timeout: 10000
     });
     if (!el) {
-        throw new Error("Element Not Found: " + selector);
+        console.warn("Element Not Found: " + selector);
     }
     return el;
 });
@@ -3471,7 +3471,7 @@ const refreshCompanyIdEntities = (companyIds) => __awaiter(void 0, void 0, void 
     });
 });
 const refreshCompanySlugEntities = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!slug) {
+    if (!slug || slug == 'search') {
         return;
     }
     if (companySlugEntities.has(slug)) {
@@ -3554,10 +3554,13 @@ const applyH1BSummary = () => __awaiter(void 0, void 0, void 0, function* () {
         yield refreshCompanySlugEntities(companySlug);
         const entities = companySlugEntities.get(companySlug);
         if (!entities) {
-            console.error("Company Not Found");
+            console.log("Company Not Found");
             return;
         }
         const topCardElement = yield refreshElement(LinkedInSelectors.JobsTopCard);
+        if (!topCardElement) {
+            return;
+        }
         const existingSummary = topCardElement.querySelector(LinkedInSelectors.H1BSummaryTag);
         if (existingSummary) {
             return;
@@ -3565,7 +3568,7 @@ const applyH1BSummary = () => __awaiter(void 0, void 0, void 0, function* () {
         constructH1BSummary(topCardElement, entities);
     }
     catch (err) {
-        console.error(err);
+        console.warn(err);
     }
 });
 const initialize = () => __awaiter(void 0, void 0, void 0, function* () {

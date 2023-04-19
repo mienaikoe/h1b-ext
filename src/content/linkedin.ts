@@ -35,7 +35,7 @@ const refreshElement  = async (selector: string): Promise<Element> => {
   });
 
   if( !el ){
-    throw new Error("Element Not Found: "+selector);
+    console.warn("Element Not Found: "+selector);
   }
 
   return el;
@@ -109,7 +109,7 @@ const refreshCompanyIdEntities = async (companyIds: string[]) => {
 }
 
 const refreshCompanySlugEntities = async (slug: string) => {
-  if( !slug ){
+  if( !slug || slug == 'search' ){
     return;
   }
 
@@ -207,20 +207,23 @@ const applyH1BSummary = async () => {
 
     const entities = companySlugEntities.get(companySlug);
     if( !entities ){
-      console.error("Company Not Found");
+      console.log("Company Not Found");
       return;
     }
 
     const topCardElement = await refreshElement(LinkedInSelectors.JobsTopCard);
-    const existingSummary = topCardElement.querySelector(LinkedInSelectors.H1BSummaryTag);
+    if (!topCardElement){
+      return;
+    }
 
+    const existingSummary = topCardElement.querySelector(LinkedInSelectors.H1BSummaryTag);
     if( existingSummary ){
       return;
     }
 
     constructH1BSummary(topCardElement, entities);
   } catch(err) {
-    console.error(err);
+    console.warn(err);
   }
 }
 
