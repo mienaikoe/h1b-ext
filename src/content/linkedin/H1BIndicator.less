@@ -1,49 +1,48 @@
 .h1bIndicator {
   margin-top: 6px;
   position: relative;
-  font-size: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1em;
   height: 0; // this is because the art deco container linkedin uses is centered to the job title
+  font-family: Helvetica, Arial, sans-serif;
 
   .dts {
-    color: black;
-    font-size: 1.4em;
-    line-height: 20px;
+    width: 100%;
+    color: white;
+    background-color: #0FD890;
+    font-size: 14px;
     font-weight: bold;
-    border-radius: 3px;
+    border-radius: 1px;
     text-align: center;
+    padding: 6px 0;
+    box-shadow: 0 4px 8px rgba(167,167,167,0.25);
   }
 
-  .h1bCounts{
-    display: flex;
-    flex-direction: column;
-    gap: 0.1em;
+  // .h1bCounts{
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 0.1em;
 
-    .h1bCount {
-      display: block;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.3em;
-      font-size: 1.2em;
+  //   .h1bCount {
+  //     display: block;
+  //     display: flex;
+  //     flex-direction: row;
+  //     align-items: center;
+  //     gap: 0.3em;
+  //     font-size: 1.2em;
 
-      &::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 4px;
-        display: block;
-      }
+  //     &::before {
+  //       content: "";
+  //       width: 8px;
+  //       height: 8px;
+  //       border-radius: 4px;
+  //       display: block;
+  //     }
 
-      &.approval::before {
-        background-color: green;
-      }
-      &.denial::before {
-        background-color: red;
-      }
-    }
-  }
+  //     &.approval::before {
+  //       background-color: green;
+  //     }
+  //     &.denial::before {
+  //       background-color: red;
+  //     }
+  //   }
+  // }
 }

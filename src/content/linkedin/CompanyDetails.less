@@ -1,21 +1,15 @@
-.companyDetails{
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 1em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.dts-companyDetails{
+  padding: 1em 0;
+  display: grid;
+  row-gap: 2em;
+  column-gap: 1em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+}
 
-  .details{
-    display: grid;
-    row-gap: 1em;
-    column-gap: 3em;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
-  .report{
-    font-weight: bold;
+@media screen and (max-width: 800px) {
+  .dts-companyDetails{
+    grid-template-columns: 1fr;
   }
 }

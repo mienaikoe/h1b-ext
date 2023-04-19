@@ -8,12 +8,21 @@
 </script>
 
 <div class="h1bSummary">
-  <div class="header">{companyName} is Down to Sponsor</div>
+  <div class="header">{companyName} is <i>Down to Sponsor</i></div>
   <div class="details">
     <CompanyDetails {entities} />
   </div>
   <div class="records">
     <CompanyRecords {entities} />
+  </div>
+  <div class="actions">
+    <div />
+    <a
+      class="report"
+      target="_blank"
+      rel="noreferrer"
+      href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a
+    >
   </div>
 </div>
 

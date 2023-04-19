@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1791jlv", ".dts-companyDetail.svelte-1791jlv .dts-label.svelte-1791jlv{text-transform:uppercase;font-size:0.8em;color:#888}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-se8i89", ".dts-companyDetail.svelte-se8i89 .dts-label.svelte-se8i89{text-transform:uppercase;font-size:0.8em;font-weight:600;color:#767676}");
 }
 
 function create_fragment(ctx) {
@@ -36,9 +36,9 @@ function create_fragment(ctx) {
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*value*/ ctx[1]);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-1791jlv");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-se8i89");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-value");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "dts-companyDetail svelte-1791jlv");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "dts-companyDetail svelte-se8i89");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div2, anchor);
@@ -102,12 +102,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1gb3oje", ".companyDetails.svelte-1gb3oje.svelte-1gb3oje{background-color:white;border:1px solid #ddd;border-radius:4px;padding:1em;display:flex;flex-direction:row;justify-content:space-between}.companyDetails.svelte-1gb3oje .details.svelte-1gb3oje{display:grid;row-gap:1em;column-gap:3em;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.companyDetails.svelte-1gb3oje .report.svelte-1gb3oje{font-weight:bold}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-bglp37", ".dts-companyDetails.svelte-bglp37{padding:1em 0;display:grid;row-gap:2em;column-gap:1em;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:100%}@media screen and (max-width: 800px){.dts-companyDetails.svelte-bglp37{grid-template-columns:1fr}}");
 }
 
 function create_fragment(ctx) {
-	let div1;
-	let div0;
+	let div;
 	let companydetail0;
 	let t0;
 	let companydetail1;
@@ -115,8 +114,6 @@ function create_fragment(ctx) {
 	let companydetail2;
 	let t2;
 	let companydetail3;
-	let t3;
-	let a;
 	let current;
 
 	companydetail0 = new _CompanyDetail_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -128,15 +125,15 @@ function create_fragment(ctx) {
 
 	companydetail1 = new _CompanyDetail_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({
 			props: {
-				label: "Legal Name",
-				value: /*legalName*/ ctx[1]
+				label: "Location",
+				value: /*location*/ ctx[2]
 			}
 		});
 
 	companydetail2 = new _CompanyDetail_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({
 			props: {
-				label: "Location",
-				value: /*location*/ ctx[2]
+				label: "USCIS Legal Name",
+				value: /*legalName*/ ctx[1]
 			}
 		});
 
@@ -149,8 +146,7 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
-			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+			div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail0.$$.fragment);
 			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail1.$$.fragment);
@@ -158,28 +154,17 @@ function create_fragment(ctx) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail2.$$.fragment);
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail3.$$.fragment);
-			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-			a = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("a");
-			a.textContent = "Report an error";
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "details svelte-1gb3oje");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(a, "class", "report svelte-1gb3oje");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(a, "target", "_blank");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(a, "rel", "noreferrer");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(a, "href", "https://forms.gle/FvVjBZrGzWjT3Lhk6");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "companyDetails svelte-1gb3oje");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyDetails svelte-bglp37");
 		},
 		m(target, anchor) {
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div1, anchor);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, div0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail0, div0, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail1, div0, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t1);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail2, div0, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t2);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail3, div0, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t3);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, a);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail0, div, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t0);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail1, div, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t1);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail2, div, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div, t2);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetail3, div, null);
 			current = true;
 		},
 		p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
@@ -199,7 +184,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div1);
+			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companydetail0);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companydetail1);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companydetail2);
@@ -264,7 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1mo3ker", ".dts-companyRecord.svelte-1mo3ker.svelte-1mo3ker{display:flex;flex-direction:row;align-items:center;gap:0.5em}.dts-companyRecord.svelte-1mo3ker .dts-value.svelte-1mo3ker{font-size:2.5em}.dts-companyRecord.svelte-1mo3ker .dts-label.svelte-1mo3ker{font-size:1em;width:70px;line-height:1.1}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1ts5fqa", ".dts-companyRecord.svelte-1ts5fqa.svelte-1ts5fqa{display:flex;flex-direction:row;align-items:center;gap:0.5em;background-color:white;border-radius:5px;overflow:hidden}.dts-companyRecord.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{font-size:20px;color:white;width:80px;line-height:45px;text-align:center;font-weight:700}.dts-companyRecord.svelte-1ts5fqa .dts-label.svelte-1ts5fqa{font-size:0.8em;font-weight:600;width:70px;text-transform:uppercase}.dts-companyRecord.dts-positive.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{background-color:#0FD890}.dts-companyRecord.dts-negative.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{background-color:#FF9900}");
 }
 
 function create_fragment(ctx) {
@@ -274,6 +259,7 @@ function create_fragment(ctx) {
 	let t1;
 	let div1;
 	let t2;
+	let div2_class_value;
 
 	return {
 		c() {
@@ -283,9 +269,9 @@ function create_fragment(ctx) {
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*label*/ ctx[0]);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-value svelte-1mo3ker");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-label svelte-1mo3ker");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "dts-companyRecord svelte-1mo3ker");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-value svelte-1ts5fqa");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-label svelte-1ts5fqa");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", div2_class_value = "dts-companyRecord " + (/*isPositive*/ ctx[2] ? 'dts-positive' : 'dts-negative') + " svelte-1ts5fqa");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div2, anchor);
@@ -310,13 +296,14 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { label = "" } = $$props;
 	let { value = "" } = $$props;
+	let isPositive = label.includes("pprovals");
 
 	$$self.$$set = $$props => {
 		if ('label' in $$props) $$invalidate(0, label = $$props.label);
 		if ('value' in $$props) $$invalidate(1, value = $$props.value);
 	};
 
-	return [label, value];
+	return [label, value, isPositive];
 }
 
 class CompanyRecord extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent {
@@ -351,7 +338,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-9o24ux", ".dts-companyRecords.svelte-9o24ux{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;row-gap:1em;column-gap:6em}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-5ixy65", ".dts-companyRecords.svelte-5ixy65{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;row-gap:1em;column-gap:1em}@media screen and (max-width: 800px){.dts-companyRecords.svelte-5ixy65{grid-template-columns:1fr}}");
 }
 
 function create_fragment(ctx) {
@@ -374,21 +361,21 @@ function create_fragment(ctx) {
 
 	companyrecord1 = new _CompanyRecord_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
 			props: {
-				label: "Cont. Approvals",
-				value: /*mergedRecord*/ ctx[0].continuing_approval
-			}
-		});
-
-	companyrecord2 = new _CompanyRecord_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
-			props: {
 				label: "New Denials",
 				value: /*mergedRecord*/ ctx[0].initial_denial
 			}
 		});
 
+	companyrecord2 = new _CompanyRecord_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
+			props: {
+				label: "Continuing Approvals",
+				value: /*mergedRecord*/ ctx[0].continuing_approval
+			}
+		});
+
 	companyrecord3 = new _CompanyRecord_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({
 			props: {
-				label: "Cont. Denials",
+				label: "Continuing Denials",
 				value: /*mergedRecord*/ ctx[0].continuing_denial
 			}
 		});
@@ -403,7 +390,7 @@ function create_fragment(ctx) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecord2.$$.fragment);
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecord3.$$.fragment);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyRecords svelte-9o24ux");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyRecords svelte-5ixy65");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
@@ -421,10 +408,10 @@ function create_fragment(ctx) {
 			if (dirty & /*mergedRecord*/ 1) companyrecord0_changes.value = /*mergedRecord*/ ctx[0].initial_approval;
 			companyrecord0.$set(companyrecord0_changes);
 			const companyrecord1_changes = {};
-			if (dirty & /*mergedRecord*/ 1) companyrecord1_changes.value = /*mergedRecord*/ ctx[0].continuing_approval;
+			if (dirty & /*mergedRecord*/ 1) companyrecord1_changes.value = /*mergedRecord*/ ctx[0].initial_denial;
 			companyrecord1.$set(companyrecord1_changes);
 			const companyrecord2_changes = {};
-			if (dirty & /*mergedRecord*/ 1) companyrecord2_changes.value = /*mergedRecord*/ ctx[0].initial_denial;
+			if (dirty & /*mergedRecord*/ 1) companyrecord2_changes.value = /*mergedRecord*/ ctx[0].continuing_approval;
 			companyrecord2.$set(companyrecord2_changes);
 			const companyrecord3_changes = {};
 			if (dirty & /*mergedRecord*/ 1) companyrecord3_changes.value = /*mergedRecord*/ ctx[0].continuing_denial;
@@ -509,59 +496,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1938mo9", ".h1bIndicator.svelte-1938mo9.svelte-1938mo9{margin-top:6px;position:relative;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:0.1em;height:0}.h1bIndicator.svelte-1938mo9 .dts.svelte-1938mo9{color:black;font-size:1.4em;line-height:20px;font-weight:bold;border-radius:3px;text-align:center}.h1bIndicator.svelte-1938mo9 .h1bCounts.svelte-1938mo9{display:flex;flex-direction:column;gap:0.1em}.h1bIndicator.svelte-1938mo9 .h1bCounts .h1bCount.svelte-1938mo9{display:block;display:flex;flex-direction:row;align-items:center;gap:0.3em;font-size:1.2em}.h1bIndicator.svelte-1938mo9 .h1bCounts .h1bCount.svelte-1938mo9::before{content:\"\";width:8px;height:8px;border-radius:4px;display:block}.h1bIndicator.svelte-1938mo9 .h1bCounts .h1bCount.approval.svelte-1938mo9::before{background-color:green}.h1bIndicator.svelte-1938mo9 .h1bCounts .h1bCount.denial.svelte-1938mo9::before{background-color:red}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-xi5fma", ".h1bIndicator.svelte-xi5fma.svelte-xi5fma{margin-top:6px;position:relative;height:0;font-family:Helvetica, Arial, sans-serif}.h1bIndicator.svelte-xi5fma .dts.svelte-xi5fma{width:100%;color:white;background-color:#0FD890;font-size:14px;font-weight:bold;border-radius:1px;text-align:center;padding:6px 0;box-shadow:0 4px 8px rgba(167, 167, 167, 0.25)}");
 }
 
 function create_fragment(ctx) {
-	let div4;
-	let div0;
-	let t1;
-	let div3;
 	let div1;
-	let t2_value = /*mergedRecord*/ ctx[0].continuing_approval + /*mergedRecord*/ ctx[0].initial_approval + "";
-	let t2;
-	let t3;
-	let div2;
-	let t4_value = /*mergedRecord*/ ctx[0].continuing_denial + /*mergedRecord*/ ctx[0].initial_denial + "";
-	let t4;
 
 	return {
 		c() {
-			div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0.textContent = "DTS";
-			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-			div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
-			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t4_value);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts svelte-1938mo9");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "h1bCount approval svelte-1938mo9");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "h1bCount denial svelte-1938mo9");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "h1bCounts svelte-1938mo9");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "h1bIndicator svelte-1938mo9");
+			div1.innerHTML = `<div class="dts svelte-xi5fma">DTS</div>`;
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "h1bIndicator svelte-xi5fma");
 		},
 		m(target, anchor) {
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div4, anchor);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, t1);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div4, div3);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div1);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t2);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t3);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div2);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div2, t4);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div1, anchor);
 		},
-		p(ctx, [dirty]) {
-			if (dirty & /*mergedRecord*/ 1 && t2_value !== (t2_value = /*mergedRecord*/ ctx[0].continuing_approval + /*mergedRecord*/ ctx[0].initial_approval + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
-			if (dirty & /*mergedRecord*/ 1 && t4_value !== (t4_value = /*mergedRecord*/ ctx[0].continuing_denial + /*mergedRecord*/ ctx[0].initial_denial + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t4, t4_value);
-		},
+		p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
 		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
 		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
 		d(detaching) {
-			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div4);
+			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div1);
 		}
 	};
 }
@@ -573,24 +527,24 @@ function instance($$self, $$props, $$invalidate) {
 	entities.forEach(entity => {
 		entity.records.forEach(record => {
 			if (!mergedRecord) {
-				$$invalidate(0, mergedRecord = record);
+				mergedRecord = record;
 			} else {
-				$$invalidate(0, mergedRecord = (0,_common_utilities__WEBPACK_IMPORTED_MODULE_1__.mergeH1BRecords)(mergedRecord, record));
+				mergedRecord = (0,_common_utilities__WEBPACK_IMPORTED_MODULE_1__.mergeH1BRecords)(mergedRecord, record);
 			}
 		});
 	});
 
 	$$self.$$set = $$props => {
-		if ('entities' in $$props) $$invalidate(1, entities = $$props.entities);
+		if ('entities' in $$props) $$invalidate(0, entities = $$props.entities);
 	};
 
-	return [mergedRecord, entities];
+	return [entities];
 }
 
 class H1BIndicator extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent {
 	constructor(options) {
 		super();
-		(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(this, options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, { entities: 1 }, add_css);
+		(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(this, options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, { entities: 0 }, add_css);
 	}
 }
 
@@ -619,47 +573,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1gdg96m", ".h1bSummary.svelte-1gdg96m.svelte-1gdg96m{background-color:#F0F1F5;padding:1.5em;border-radius:0.5em}.h1bSummary.svelte-1gdg96m .header.svelte-1gdg96m{font-size:1.5em}.h1bSummary.svelte-1gdg96m .details.svelte-1gdg96m{margin-top:1.2em}.h1bSummary.svelte-1gdg96m .records.svelte-1gdg96m{margin-top:2em}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1c9bjdw", ".h1bSummary.svelte-1c9bjdw.svelte-1c9bjdw{background-color:#FAFAFA;padding:1.5em;border-radius:0.5em;margin-bottom:2em;box-shadow:0px 4px 20px rgba(167, 167, 167, 0.35)}.h1bSummary.svelte-1c9bjdw .header.svelte-1c9bjdw{font-size:1.5em}.h1bSummary.svelte-1c9bjdw .details.svelte-1c9bjdw,.h1bSummary.svelte-1c9bjdw .records.svelte-1c9bjdw{max-width:480px}.h1bSummary.svelte-1c9bjdw .details.svelte-1c9bjdw{margin-top:1.2em}.h1bSummary.svelte-1c9bjdw .records.svelte-1c9bjdw{margin-top:2em}.h1bSummary.svelte-1c9bjdw .actions.svelte-1c9bjdw{display:flex;flex-direction:row;justify-content:space-between;margin-top:3em}");
 }
 
 function create_fragment(ctx) {
-	let div3;
+	let div5;
 	let div0;
-	let t2;
+	let t0;
+	let t1;
+	let i;
+	let t3;
 	let div1;
 	let companydetails;
-	let t3;
+	let t4;
 	let div2;
 	let companyrecords;
+	let t5;
+	let div4;
 	let current;
 	companydetails = new _CompanyDetails_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({ props: { entities: /*entities*/ ctx[0] } });
 	companyrecords = new _CompanyRecords_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({ props: { entities: /*entities*/ ctx[0] } });
 
 	return {
 		c() {
-			div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+			div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0.textContent = `${/*companyName*/ ctx[1]} is Down to Sponsor`;
-			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*companyName*/ ctx[1]);
+			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(" is ");
+			i = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("i");
+			i.textContent = "Down to Sponsor";
+			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetails.$$.fragment);
-			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecords.$$.fragment);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "header svelte-1gdg96m");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "details svelte-1gdg96m");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "records svelte-1gdg96m");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "h1bSummary svelte-1gdg96m");
+			t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+
+			div4.innerHTML = `<div></div> 
+    <a class="report" target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a>`;
+
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "header svelte-1c9bjdw");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "details svelte-1c9bjdw");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "records svelte-1c9bjdw");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "actions svelte-1c9bjdw");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "h1bSummary svelte-1c9bjdw");
 		},
 		m(target, anchor) {
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div3, anchor);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t2);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div1);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div5, anchor);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div0);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t0);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t1);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, i);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t3);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div1);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetails, div1, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, t3);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div3, div2);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t4);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div2);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companyrecords, div2, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t5);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div4);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -682,7 +656,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div3);
+			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div5);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companydetails);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companyrecords);
 		}
@@ -3588,7 +3562,6 @@ const applyH1BSummary = () => __awaiter(void 0, void 0, void 0, function* () {
         if (existingSummary) {
             return;
         }
-        console.log("Constructing summary", companySlug, topCardElement);
         constructH1BSummary(topCardElement, entities);
     }
     catch (err) {

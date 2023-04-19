@@ -21,12 +21,16 @@
 
 <div class="dts-companyRecords">
   <CompanyRecord label="New Approvals" value={mergedRecord.initial_approval} />
+  <CompanyRecord label="New Denials" value={mergedRecord.initial_denial} />
+
   <CompanyRecord
-    label="Cont. Approvals"
+    label="Continuing Approvals"
     value={mergedRecord.continuing_approval}
   />
-  <CompanyRecord label="New Denials" value={mergedRecord.initial_denial} />
-  <CompanyRecord label="Cont. Denials" value={mergedRecord.continuing_denial} />
+  <CompanyRecord
+    label="Continuing Denials"
+    value={mergedRecord.continuing_denial}
+  />
 </div>
 
 <style src="./CompanyRecords.less"></style>

@@ -12,19 +12,11 @@
   const employeeCount = `~${firstEntity?.linkedin.employee_count}`;
 </script>
 
-<div class="companyDetails">
-  <div class="details">
-    <CompanyDetail label="LinkedIn Name" value={companyName} />
-    <CompanyDetail label="Legal Name" value={legalName} />
-    <CompanyDetail label="Location" value={location} />
-    <CompanyDetail label="Employee Count" value={employeeCount} />
-  </div>
-  <a
-    class="report"
-    target="_blank"
-    rel="noreferrer"
-    href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a
-  >
+<div class="dts-companyDetails">
+  <CompanyDetail label="LinkedIn Name" value={companyName} />
+  <CompanyDetail label="Location" value={location} />
+  <CompanyDetail label="USCIS Legal Name" value={legalName} />
+  <CompanyDetail label="Employee Count" value={employeeCount} />
 </div>
 
 <style src="./CompanyDetails.less"></style>

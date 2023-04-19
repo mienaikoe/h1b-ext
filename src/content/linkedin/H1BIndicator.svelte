@@ -18,14 +18,6 @@
 
 <div class="h1bIndicator">
   <div class="dts">DTS</div>
-  <div class="h1bCounts">
-    <div class="h1bCount approval">
-      {mergedRecord.continuing_approval + mergedRecord.initial_approval}
-    </div>
-    <div class="h1bCount denial">
-      {mergedRecord.continuing_denial + mergedRecord.initial_denial}
-    </div>
-  </div>
 </div>
 
 <style src="./H1BIndicator.less">

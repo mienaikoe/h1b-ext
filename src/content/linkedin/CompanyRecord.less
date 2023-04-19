@@ -3,13 +3,29 @@
   flex-direction: row;
   align-items: center;
   gap: 0.5em;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
 
   .dts-value{
-    font-size: 2.5em;
+    font-size: 20px;
+    color: white;
+    width: 80px;
+    line-height: 45px;
+    text-align: center;
+    font-weight: 700;
   }
   .dts-label{
-    font-size: 1em;
+    font-size: 0.8em;
+    font-weight: 600;
     width: 70px;
-    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  &.dts-positive .dts-value{
+    background-color: #0FD890;
+  }
+  &.dts-negative .dts-value{
+    background-color: #FF9900;
   }
 }

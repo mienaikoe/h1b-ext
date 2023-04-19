@@ -218,8 +218,6 @@ const applyH1BSummary = async () => {
       return;
     }
 
-    console.log("Constructing summary", companySlug, topCardElement);
-
     constructH1BSummary(topCardElement, entities);
   } catch(err) {
     console.error(err);
