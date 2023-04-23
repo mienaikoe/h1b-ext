@@ -32,3 +32,6 @@ node_modules/
 # Mac Stuff
 .DS_Store
 **/.DS_Store
+
+# zips
+*.zip
