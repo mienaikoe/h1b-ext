@@ -17,6 +17,8 @@ enum LinkedInSelectors {
 
   H1BIndicatorTag = ".h1bContainer",
   H1BSummaryTag = ".h1bSummary",
+
+  SPADiv = ".authentication-outlet",
 }
 
 let listElement: Element | undefined = undefined;
@@ -86,9 +88,10 @@ const getH1BDataBySlug = async (slug: string): Promise<DTSResponsePayloadGetH1BD
   return await sendRequest(request) as DTSResponsePayloadGetH1BDataBySlug;
 }
 
-const subscribeToMutations = (targetNode: Element, callback: () => void) => {
+const subscribeToMutations = (targetNode: Element, callback: () => void, subtree=true) => {
   const observer = new MutationObserver(callback);
-  observer.observe(targetNode, { childList: true, subtree: true });
+  observer.observe(targetNode, { childList: true, subtree });
+  return observer;
 }
 
 const refreshCompanyIdEntities = async (companyIds: string[]) => {
@@ -137,7 +140,8 @@ const applyH1BIndicators = async () => {
       }
     });
 
-    const companyIds = Object.keys(companyIdItems).filter(
+    const companyIds = Object.keys(companyIdItems)
+    .filter(
       companyId => !searchedCompanyIds.has(companyId)
     );
     if( companyIds.length ){
@@ -146,10 +150,6 @@ const applyH1BIndicators = async () => {
     }
 
     Object.entries(companyIdItems).forEach(([companyId, child]) => {
-      if( indicatedCompanyIds.has(companyId) ){
-        return;
-      }
-
       const h1bEntities = companyIdEntities.get(companyId);
       if( !h1bEntities ){
         return;
@@ -160,9 +160,11 @@ const applyH1BIndicators = async () => {
       if( !imageContainer ){
         return;
       }
+      if( imageContainer.children.length > 1 ){
+        return;
+      }
 
       constructH1BIndicator(imageContainer, h1bEntities);
-      indicatedCompanyIds.add(companyId);
     })
   } catch(err) {
     console.error(err);
@@ -227,16 +229,33 @@ const applyH1BSummary = async () => {
   }
 }
 
-const initialize = async () => {
+const refresh = async () => {
   listElement = await refreshElement(LinkedInSelectors.JobsList);
   await applyH1BIndicators();
 
   detailsElement = await refreshElement(LinkedInSelectors.JobDetails);
   await applyH1BSummary();
 
-  subscribeToMutations(listElement, applyH1BIndicators);
-  subscribeToMutations(detailsElement, applyH1BSummary);
+  const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
+  const detailsObserver = subscribeToMutations(detailsElement, applyH1BSummary);
+
+  return () => {
+    listObserver.disconnect();
+    detailsObserver.disconnect();
+  }
+}
+
+const initialize = async () => {
+  let disconnect = await refresh();
+
+  const rootElement = await refreshElement(LinkedInSelectors.SPADiv);
+
+  subscribeToMutations(rootElement, async () => {
+    if( window.location.href.includes("/jobs/search") ){
+      disconnect();
+      disconnect = await refresh();
+    }
+  }, false);
 }
 
 initialize();
-

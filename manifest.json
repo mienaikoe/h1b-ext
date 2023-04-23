@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "DTS: Down To Sponsor",
   "version": "0.1",
-  "description": "Find companies that are willing to sponsor you in your LinkedIn job search.",
+  "description": "Find companies that sponsor workers in your LinkedIn job search.",
 
   "action": {
     "default_icon": {
@@ -14,8 +14,12 @@
     "default_popup": "static/popup.html"
   },
 
-  "icons": {},
-  "permissions": ["activeTab", "webNavigation"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [],
   "background": {
     "service_worker": "dist/background.js"
   },

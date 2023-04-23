@@ -3401,6 +3401,7 @@ var LinkedInSelectors;
     LinkedInSelectors["JobsTopCardUrl"] = ".jobs-unified-top-card__company-name a";
     LinkedInSelectors["H1BIndicatorTag"] = ".h1bContainer";
     LinkedInSelectors["H1BSummaryTag"] = ".h1bSummary";
+    LinkedInSelectors["SPADiv"] = ".authentication-outlet";
 })(LinkedInSelectors || (LinkedInSelectors = {}));
 let listElement = undefined;
 let detailsElement = undefined;
@@ -3454,9 +3455,10 @@ const getH1BDataBySlug = (slug) => __awaiter(void 0, void 0, void 0, function* (
     };
     return yield (0,_common_chromeMessaging__WEBPACK_IMPORTED_MODULE_2__.sendRequest)(request);
 });
-const subscribeToMutations = (targetNode, callback) => {
+const subscribeToMutations = (targetNode, callback, subtree = true) => {
     const observer = new MutationObserver(callback);
-    observer.observe(targetNode, { childList: true, subtree: true });
+    observer.observe(targetNode, { childList: true, subtree });
+    return observer;
 };
 const refreshCompanyIdEntities = (companyIds) => __awaiter(void 0, void 0, void 0, function* () {
     if (!companyIds.length) {
@@ -3493,15 +3495,13 @@ const applyH1BIndicators = () => __awaiter(void 0, void 0, void 0, function* () 
                 companyIdItems[companyId] = companyItem;
             }
         });
-        const companyIds = Object.keys(companyIdItems).filter(companyId => !searchedCompanyIds.has(companyId));
+        const companyIds = Object.keys(companyIdItems)
+            .filter(companyId => !searchedCompanyIds.has(companyId));
         if (companyIds.length) {
             companyIds.forEach(companyId => searchedCompanyIds.add(companyId));
             yield refreshCompanyIdEntities(companyIds);
         }
         Object.entries(companyIdItems).forEach(([companyId, child]) => {
-            if (indicatedCompanyIds.has(companyId)) {
-                return;
-            }
             const h1bEntities = companyIdEntities.get(companyId);
             if (!h1bEntities) {
                 return;
@@ -3511,8 +3511,10 @@ const applyH1BIndicators = () => __awaiter(void 0, void 0, void 0, function* () 
             if (!imageContainer) {
                 return;
             }
+            if (imageContainer.children.length > 1) {
+                return;
+            }
             constructH1BIndicator(imageContainer, h1bEntities);
-            indicatedCompanyIds.add(companyId);
         });
     }
     catch (err) {
@@ -3571,13 +3573,27 @@ const applyH1BSummary = () => __awaiter(void 0, void 0, void 0, function* () {
         console.warn(err);
     }
 });
-const initialize = () => __awaiter(void 0, void 0, void 0, function* () {
+const refresh = () => __awaiter(void 0, void 0, void 0, function* () {
     listElement = yield refreshElement(LinkedInSelectors.JobsList);
     yield applyH1BIndicators();
     detailsElement = yield refreshElement(LinkedInSelectors.JobDetails);
     yield applyH1BSummary();
-    subscribeToMutations(listElement, applyH1BIndicators);
-    subscribeToMutations(detailsElement, applyH1BSummary);
+    const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
+    const detailsObserver = subscribeToMutations(detailsElement, applyH1BSummary);
+    return () => {
+        listObserver.disconnect();
+        detailsObserver.disconnect();
+    };
+});
+const initialize = () => __awaiter(void 0, void 0, void 0, function* () {
+    let disconnect = yield refresh();
+    const rootElement = yield refreshElement(LinkedInSelectors.SPADiv);
+    subscribeToMutations(rootElement, () => __awaiter(void 0, void 0, void 0, function* () {
+        if (window.location.href.includes("/jobs/search")) {
+            disconnect();
+            disconnect = yield refresh();
+        }
+    }), false);
 });
 initialize();
 
