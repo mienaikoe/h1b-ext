@@ -258,6 +258,7 @@ function create_fragment(ctx) {
 	let t0;
 	let t1;
 	let div1;
+	let t2_value = /*value*/ ctx[1].toLocaleString() + "";
 	let t2;
 	let div2_class_value;
 
@@ -268,7 +269,7 @@ function create_fragment(ctx) {
 			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*label*/ ctx[0]);
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*value*/ ctx[1]);
+			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(t2_value);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-caaym0");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-value svelte-caaym0");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", div2_class_value = "dts-companyRecord " + (/*isPositive*/ ctx[2] ? 'dts-positive' : 'dts-negative') + " svelte-caaym0");
@@ -283,7 +284,7 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*label*/ 1) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, /*label*/ ctx[0]);
-			if (dirty & /*value*/ 2) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, /*value*/ ctx[1]);
+			if (dirty & /*value*/ 2 && t2_value !== (t2_value = /*value*/ ctx[1].toLocaleString() + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, t2_value);
 		},
 		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
 		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
@@ -573,7 +574,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-11rrbzd", ".h1bSummary.svelte-11rrbzd.svelte-11rrbzd{background-color:white;border:2px solid #EBEBEB;padding:1.5em;border-radius:0.5em;margin-bottom:2em;box-shadow:0px 4px 20px rgba(167, 167, 167, 0.35);font-family:\"Helvetica\";font-size:12px}.h1bSummary.svelte-11rrbzd .header.svelte-11rrbzd{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start}.h1bSummary.svelte-11rrbzd .header .title.svelte-11rrbzd{font-size:1.6em;font-weight:700}.h1bSummary.svelte-11rrbzd .header .report.svelte-11rrbzd{font-family:\"Tahoma\";font-weight:700;font-size:1.1em;color:#FF5C00}.h1bSummary.svelte-11rrbzd .details.svelte-11rrbzd,.h1bSummary.svelte-11rrbzd .records.svelte-11rrbzd{max-width:480px}.h1bSummary.svelte-11rrbzd .details.svelte-11rrbzd{margin-top:1.2em;background-color:#F9f9f9;border-radius:6px}.h1bSummary.svelte-11rrbzd .records.svelte-11rrbzd{margin-top:2em}.h1bSummary.svelte-11rrbzd .actions.svelte-11rrbzd{display:flex;flex-direction:row;justify-content:space-between;margin-top:3em;width:100%}.h1bSummary.svelte-11rrbzd .actions .action.svelte-11rrbzd{font-size:1.1em;background:white;border:2px solid #00D287;border-radius:6px;color:#00D287;text-decoration:none;padding:0.5em 2.1em 0.4em}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-b581yz", ".h1bSummary.svelte-b581yz.svelte-b581yz{background-color:white;border:2px solid #EBEBEB;padding:1.5em;border-radius:0.5em;margin-bottom:2em;box-shadow:0px 4px 20px rgba(167, 167, 167, 0.35);font-family:\"Helvetica\";font-size:12px}.h1bSummary.svelte-b581yz .header.svelte-b581yz{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start}.h1bSummary.svelte-b581yz .header .title.svelte-b581yz{font-size:1.6em;font-weight:700}.h1bSummary.svelte-b581yz .header .report.svelte-b581yz{font-family:\"Tahoma\";font-weight:700;font-size:1.1em;color:#FF5C00}.h1bSummary.svelte-b581yz .details.svelte-b581yz,.h1bSummary.svelte-b581yz .records.svelte-b581yz{max-width:480px}.h1bSummary.svelte-b581yz .details.svelte-b581yz{margin-top:1.2em;background-color:#F9f9f9;border-radius:6px}.h1bSummary.svelte-b581yz .records.svelte-b581yz{margin-top:2em}.h1bSummary.svelte-b581yz .actions.svelte-b581yz{display:flex;flex-direction:row;justify-content:space-between;margin-top:3em;width:100%}.h1bSummary.svelte-b581yz .actions .action.svelte-b581yz{font-size:1.1em;background:white;border:2px solid #00D287;border-radius:6px;color:#00D287;text-decoration:none;padding:0.52em 2.1em 0.4em}");
 }
 
 function create_fragment(ctx) {
@@ -596,8 +597,8 @@ function create_fragment(ctx) {
 			div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 
-			div1.innerHTML = `<div class="title svelte-11rrbzd">Down to Sponsor</div> 
-    <a class="report svelte-11rrbzd" target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a>`;
+			div1.innerHTML = `<div class="title svelte-b581yz">Down to Sponsor</div> 
+    <a class="report svelte-b581yz" target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a>`;
 
 			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
@@ -609,13 +610,13 @@ function create_fragment(ctx) {
 			div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 
 			div5.innerHTML = `<div></div> 
-    <a href="https://docs.google.com/document/d/1oHrvlrUtcULBcPu_R_c-2sTykP4k0vmP6ANlO99mIKw/edit?usp=sharing" target="_blank" rel="noreferrer" class="action svelte-11rrbzd">Privacy Policy</a>`;
+    <a href="https://docs.google.com/document/d/1oHrvlrUtcULBcPu_R_c-2sTykP4k0vmP6ANlO99mIKw/edit?usp=sharing" target="_blank" rel="noreferrer" class="action svelte-b581yz">Privacy Policy</a>`;
 
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "header svelte-11rrbzd");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "details svelte-11rrbzd");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "records svelte-11rrbzd");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "actions svelte-11rrbzd");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div6, "class", "h1bSummary svelte-11rrbzd");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "header svelte-b581yz");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "details svelte-b581yz");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "records svelte-b581yz");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "actions svelte-b581yz");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div6, "class", "h1bSummary svelte-b581yz");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div6, anchor);
