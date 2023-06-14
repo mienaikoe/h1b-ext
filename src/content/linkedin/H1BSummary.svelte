@@ -8,7 +8,15 @@
 </script>
 
 <div class="h1bSummary">
-  <div class="header">{companyName} is <i>Down to Sponsor</i></div>
+  <div class="header">
+    <div class="title">Down to Sponsor</div>
+    <a
+      class="report"
+      target="_blank"
+      rel="noreferrer"
+      href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a
+    >
+  </div>
   <div class="details">
     <CompanyDetails {entities} />
   </div>
@@ -18,11 +26,13 @@
   <div class="actions">
     <div />
     <a
-      class="report"
+      href="https://docs.google.com/document/d/1oHrvlrUtcULBcPu_R_c-2sTykP4k0vmP6ANlO99mIKw/edit?usp=sharing"
       target="_blank"
       rel="noreferrer"
-      href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a
+      class="action"
     >
+      Privacy Policy
+    </a>
   </div>
 </div>
 

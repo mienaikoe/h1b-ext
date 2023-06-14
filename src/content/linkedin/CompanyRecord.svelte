@@ -5,8 +5,8 @@
 </script>
 
 <div class="dts-companyRecord {isPositive ? 'dts-positive' : 'dts-negative'}">
-  <div class="dts-value">{value}</div>
   <div class="dts-label">{label}</div>
+  <div class="dts-value">{value}</div>
 </div>
 
 <style src="./CompanyRecord.less"></style>

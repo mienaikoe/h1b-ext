@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-se8i89", ".dts-companyDetail.svelte-se8i89 .dts-label.svelte-se8i89{text-transform:uppercase;font-size:0.8em;font-weight:600;color:#767676}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1jaqki1", ".dts-companyDetail.svelte-1jaqki1 .dts-label.svelte-1jaqki1{text-transform:uppercase;font-size:1em;line-height:1.25;font-weight:600;color:#767676;letter-spacing:0.035em;margin-bottom:0.3em}.dts-companyDetail.svelte-1jaqki1 .dts-value.svelte-1jaqki1{font-family:\"Tahoma\";font-weight:400;font-size:1.4em;line-height:1.2;color:#45434B}");
 }
 
 function create_fragment(ctx) {
@@ -36,9 +36,9 @@ function create_fragment(ctx) {
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*value*/ ctx[1]);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-se8i89");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-value");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "dts-companyDetail svelte-se8i89");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-1jaqki1");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-value svelte-1jaqki1");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "dts-companyDetail svelte-1jaqki1");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div2, anchor);
@@ -102,7 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-bglp37", ".dts-companyDetails.svelte-bglp37{padding:1em 0;display:grid;row-gap:2em;column-gap:1em;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:100%}@media screen and (max-width: 800px){.dts-companyDetails.svelte-bglp37{grid-template-columns:1fr}}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1szqy17", ".dts-companyDetails.svelte-1szqy17{padding:1.3em;display:grid;row-gap:2em;column-gap:2em;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;width:100%;background-color:#f9f9f9;border-radius:0.5em}@media screen and (max-width: 800px){.dts-companyDetails.svelte-1szqy17{grid-template-columns:1fr}}");
 }
 
 function create_fragment(ctx) {
@@ -154,7 +154,7 @@ function create_fragment(ctx) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail2.$$.fragment);
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetail3.$$.fragment);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyDetails svelte-bglp37");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyDetails svelte-1szqy17");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
@@ -249,7 +249,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1ts5fqa", ".dts-companyRecord.svelte-1ts5fqa.svelte-1ts5fqa{display:flex;flex-direction:row;align-items:center;gap:0.5em;background-color:white;border-radius:5px;overflow:hidden}.dts-companyRecord.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{font-size:20px;color:white;width:80px;line-height:45px;text-align:center;font-weight:700}.dts-companyRecord.svelte-1ts5fqa .dts-label.svelte-1ts5fqa{font-size:0.8em;font-weight:600;width:70px;text-transform:uppercase}.dts-companyRecord.dts-positive.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{background-color:#0FD890}.dts-companyRecord.dts-negative.svelte-1ts5fqa .dts-value.svelte-1ts5fqa{background-color:#FF9900}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-caaym0", ".dts-companyRecord.svelte-caaym0.svelte-caaym0{display:flex;flex-direction:column;align-items:flex-start;background-color:white;overflow:hidden}.dts-companyRecord.svelte-caaym0 .dts-value.svelte-caaym0{font-size:4em;line-height:1.2;font-weight:400}.dts-companyRecord.svelte-caaym0 .dts-label.svelte-caaym0{font-size:1em;line-height:1.25;font-weight:500;text-transform:uppercase;letter-spacing:0.045em}");
 }
 
 function create_fragment(ctx) {
@@ -265,13 +265,13 @@ function create_fragment(ctx) {
 		c() {
 			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*value*/ ctx[1]);
+			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*label*/ ctx[0]);
 			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*label*/ ctx[0]);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-value svelte-1ts5fqa");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-label svelte-1ts5fqa");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", div2_class_value = "dts-companyRecord " + (/*isPositive*/ ctx[2] ? 'dts-positive' : 'dts-negative') + " svelte-1ts5fqa");
+			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*value*/ ctx[1]);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "dts-label svelte-caaym0");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "dts-value svelte-caaym0");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", div2_class_value = "dts-companyRecord " + (/*isPositive*/ ctx[2] ? 'dts-positive' : 'dts-negative') + " svelte-caaym0");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div2, anchor);
@@ -282,8 +282,8 @@ function create_fragment(ctx) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div1, t2);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*value*/ 2) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, /*value*/ ctx[1]);
-			if (dirty & /*label*/ 1) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, /*label*/ ctx[0]);
+			if (dirty & /*label*/ 1) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t0, /*label*/ ctx[0]);
+			if (dirty & /*value*/ 2) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.set_data)(t2, /*value*/ ctx[1]);
 		},
 		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
 		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
@@ -338,7 +338,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-5ixy65", ".dts-companyRecords.svelte-5ixy65{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;row-gap:1em;column-gap:1em}@media screen and (max-width: 800px){.dts-companyRecords.svelte-5ixy65{grid-template-columns:1fr}}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-nyo38h", ".dts-companyRecords.svelte-nyo38h{padding:1.3em;flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;row-gap:2em;column-gap:2em}@media screen and (max-width: 800px){.dts-companyRecords.svelte-nyo38h{grid-template-columns:1fr}}");
 }
 
 function create_fragment(ctx) {
@@ -390,7 +390,7 @@ function create_fragment(ctx) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecord2.$$.fragment);
 			t2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecord3.$$.fragment);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyRecords svelte-5ixy65");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "dts-companyRecords svelte-nyo38h");
 		},
 		m(target, anchor) {
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
@@ -573,67 +573,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function add_css(target) {
-	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-1c9bjdw", ".h1bSummary.svelte-1c9bjdw.svelte-1c9bjdw{background-color:#FAFAFA;padding:1.5em;border-radius:0.5em;margin-bottom:2em;box-shadow:0px 4px 20px rgba(167, 167, 167, 0.35)}.h1bSummary.svelte-1c9bjdw .header.svelte-1c9bjdw{font-size:1.5em}.h1bSummary.svelte-1c9bjdw .details.svelte-1c9bjdw,.h1bSummary.svelte-1c9bjdw .records.svelte-1c9bjdw{max-width:480px}.h1bSummary.svelte-1c9bjdw .details.svelte-1c9bjdw{margin-top:1.2em}.h1bSummary.svelte-1c9bjdw .records.svelte-1c9bjdw{margin-top:2em}.h1bSummary.svelte-1c9bjdw .actions.svelte-1c9bjdw{display:flex;flex-direction:row;justify-content:space-between;margin-top:3em}");
+	(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append_styles)(target, "svelte-11rrbzd", ".h1bSummary.svelte-11rrbzd.svelte-11rrbzd{background-color:white;border:2px solid #EBEBEB;padding:1.5em;border-radius:0.5em;margin-bottom:2em;box-shadow:0px 4px 20px rgba(167, 167, 167, 0.35);font-family:\"Helvetica\";font-size:12px}.h1bSummary.svelte-11rrbzd .header.svelte-11rrbzd{display:flex;flex-direction:row;justify-content:space-between;align-items:flex-start}.h1bSummary.svelte-11rrbzd .header .title.svelte-11rrbzd{font-size:1.6em;font-weight:700}.h1bSummary.svelte-11rrbzd .header .report.svelte-11rrbzd{font-family:\"Tahoma\";font-weight:700;font-size:1.1em;color:#FF5C00}.h1bSummary.svelte-11rrbzd .details.svelte-11rrbzd,.h1bSummary.svelte-11rrbzd .records.svelte-11rrbzd{max-width:480px}.h1bSummary.svelte-11rrbzd .details.svelte-11rrbzd{margin-top:1.2em;background-color:#F9f9f9;border-radius:6px}.h1bSummary.svelte-11rrbzd .records.svelte-11rrbzd{margin-top:2em}.h1bSummary.svelte-11rrbzd .actions.svelte-11rrbzd{display:flex;flex-direction:row;justify-content:space-between;margin-top:3em;width:100%}.h1bSummary.svelte-11rrbzd .actions .action.svelte-11rrbzd{font-size:1.1em;background:white;border:2px solid #00D287;border-radius:6px;color:#00D287;text-decoration:none;padding:0.5em 2.1em 0.4em}");
 }
 
 function create_fragment(ctx) {
-	let div5;
-	let div0;
-	let t0;
-	let t1;
-	let i;
-	let t3;
+	let div6;
 	let div1;
+	let t3;
+	let div2;
 	let companydetails;
 	let t4;
-	let div2;
+	let div3;
 	let companyrecords;
 	let t5;
-	let div4;
+	let div5;
 	let current;
 	companydetails = new _CompanyDetails_svelte__WEBPACK_IMPORTED_MODULE_1__["default"]({ props: { entities: /*entities*/ ctx[0] } });
 	companyrecords = new _CompanyRecords_svelte__WEBPACK_IMPORTED_MODULE_2__["default"]({ props: { entities: /*entities*/ ctx[0] } });
 
 	return {
 		c() {
-			div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			div0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
-			t0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(/*companyName*/ ctx[1]);
-			t1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.text)(" is ");
-			i = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("i");
-			i.textContent = "Down to Sponsor";
-			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			div6 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			div1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+
+			div1.innerHTML = `<div class="title svelte-11rrbzd">Down to Sponsor</div> 
+    <a class="report svelte-11rrbzd" target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a>`;
+
+			t3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
+			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companydetails.$$.fragment);
 			t4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-			div2 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+			div3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.create_component)(companyrecords.$$.fragment);
 			t5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
-			div4 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+			div5 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
 
-			div4.innerHTML = `<div></div> 
-    <a class="report" target="_blank" rel="noreferrer" href="https://forms.gle/FvVjBZrGzWjT3Lhk6">Report an error</a>`;
+			div5.innerHTML = `<div></div> 
+    <a href="https://docs.google.com/document/d/1oHrvlrUtcULBcPu_R_c-2sTykP4k0vmP6ANlO99mIKw/edit?usp=sharing" target="_blank" rel="noreferrer" class="action svelte-11rrbzd">Privacy Policy</a>`;
 
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "header svelte-1c9bjdw");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "details svelte-1c9bjdw");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "records svelte-1c9bjdw");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div4, "class", "actions svelte-1c9bjdw");
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "h1bSummary svelte-1c9bjdw");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div1, "class", "header svelte-11rrbzd");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div2, "class", "details svelte-11rrbzd");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div3, "class", "records svelte-11rrbzd");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div5, "class", "actions svelte-11rrbzd");
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div6, "class", "h1bSummary svelte-11rrbzd");
 		},
 		m(target, anchor) {
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div5, anchor);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t0);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, t1);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div0, i);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t3);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div1);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetails, div1, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t4);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div2);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companyrecords, div2, null);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, t5);
-			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div5, div4);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div6, anchor);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, div1);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, t3);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, div2);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companydetails, div2, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, t4);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, div3);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.mount_component)(companyrecords, div3, null);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, t5);
+			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.append)(div6, div5);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -656,7 +650,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div5);
+			if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div6);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companydetails);
 			(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(companyrecords);
 		}
@@ -671,7 +665,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ('entities' in $$props) $$invalidate(0, entities = $$props.entities);
 	};
 
-	return [entities, companyName];
+	return [entities];
 }
 
 class H1BSummary extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent {
@@ -3395,7 +3389,8 @@ var LinkedInSelectors;
 (function (LinkedInSelectors) {
     LinkedInSelectors["JobsList"] = ".jobs-search-results-list ul.scaffold-layout__list-container";
     LinkedInSelectors["JobDetails"] = ".jobs-search__job-details";
-    LinkedInSelectors["CompanyLink"] = "a.job-card-container__company-name";
+    LinkedInSelectors["CompanyContainer"] = ".job-card-container";
+    LinkedInSelectors["CompanyLink"] = ".job-card-container a";
     LinkedInSelectors["CompanyImage"] = ".artdeco-entity-lockup__image";
     LinkedInSelectors["JobsTopCard"] = ".jobs-unified-top-card";
     LinkedInSelectors["JobsTopCardUrl"] = ".jobs-unified-top-card__company-name a";
@@ -3426,8 +3421,12 @@ const getCompanyIdOrSlug = (companyLink) => {
     }
     const url = new URL(href);
     const urlPieces = url.pathname.split("/");
-    const companyId = urlPieces[2];
-    return companyId || null;
+    if (href.includes("/life")) {
+        return urlPieces[2];
+    }
+    else {
+        return urlPieces[3] || null;
+    }
 };
 const constructH1BIndicator = (element, entities) => {
     new _linkedin_H1BIndicator_svelte__WEBPACK_IMPORTED_MODULE_3__["default"]({
@@ -3487,10 +3486,10 @@ const refreshCompanySlugEntities = (slug) => __awaiter(void 0, void 0, void 0, f
 });
 const applyH1BIndicators = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
+        const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyContainer);
         const companyIdItems = {};
         companyItems.forEach(companyItem => {
-            const companyId = getCompanyIdOrSlug(companyItem);
+            const companyId = getCompanyIdOrSlug(companyItem.querySelector("a"));
             if (companyId) {
                 companyIdItems[companyId] = companyItem;
             }
@@ -3574,14 +3573,14 @@ const applyH1BSummary = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 const refresh = () => __awaiter(void 0, void 0, void 0, function* () {
-    listElement = yield refreshElement(LinkedInSelectors.JobsList);
-    yield applyH1BIndicators();
+    // listElement = await refreshElement(LinkedInSelectors.JobsList);
+    // await applyH1BIndicators();
     detailsElement = yield refreshElement(LinkedInSelectors.JobDetails);
     yield applyH1BSummary();
-    const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
+    // const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
     const detailsObserver = subscribeToMutations(detailsElement, applyH1BSummary);
     return () => {
-        listObserver.disconnect();
+        // listObserver.disconnect();
         detailsObserver.disconnect();
     };
 });

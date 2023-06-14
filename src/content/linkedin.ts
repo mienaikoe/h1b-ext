@@ -9,7 +9,8 @@ enum LinkedInSelectors {
   JobsList = ".jobs-search-results-list ul.scaffold-layout__list-container",
   JobDetails = ".jobs-search__job-details",
 
-  CompanyLink = "a.job-card-container__company-name",
+  CompanyContainer = ".job-card-container",
+  CompanyLink = ".job-card-container a",
   CompanyImage = ".artdeco-entity-lockup__image",
 
   JobsTopCard = ".jobs-unified-top-card",
@@ -51,9 +52,11 @@ const getCompanyIdOrSlug = (companyLink: HTMLAnchorElement): string | null => {
 
   const url = new URL(href);
   const urlPieces = url.pathname.split("/");
-  const companyId = urlPieces[2];
-
-  return companyId || null;
+  if( href.includes("/life") ){
+    return urlPieces[2];
+  } else {
+    return urlPieces[3] || null;
+  }
 }
 
 
@@ -131,10 +134,10 @@ const refreshCompanySlugEntities = async (slug: string) => {
 
 const applyH1BIndicators = async () => {
   try{
-    const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyLink);
+    const companyItems = listElement.querySelectorAll(LinkedInSelectors.CompanyContainer);
     const companyIdItems: Record<string, Element> = {};
     companyItems.forEach(companyItem => {
-      const companyId = getCompanyIdOrSlug(companyItem as HTMLAnchorElement);
+      const companyId = getCompanyIdOrSlug(companyItem.querySelector("a"));
       if( companyId ){
         companyIdItems[companyId] = companyItem;
       }
@@ -230,17 +233,17 @@ const applyH1BSummary = async () => {
 }
 
 const refresh = async () => {
-  listElement = await refreshElement(LinkedInSelectors.JobsList);
-  await applyH1BIndicators();
+  // listElement = await refreshElement(LinkedInSelectors.JobsList);
+  // await applyH1BIndicators();
 
   detailsElement = await refreshElement(LinkedInSelectors.JobDetails);
   await applyH1BSummary();
 
-  const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
+  // const listObserver = subscribeToMutations(listElement, applyH1BIndicators);
   const detailsObserver = subscribeToMutations(detailsElement, applyH1BSummary);
 
   return () => {
-    listObserver.disconnect();
+    // listObserver.disconnect();
     detailsObserver.disconnect();
   }
 }
